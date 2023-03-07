@@ -30,7 +30,8 @@ ui <- fluidPage(
               stressful decision in life as painless and easy as possible."),
             h2("Data Set"),
             p("The “US College Graduates Wages” Dataset was collected by Daniel Simpson, 
-              a data scientist at the Birkbeck University of London. The dataset was last
+              a data scientist at the Birkbeck University of London. He created the dataset based
+              on data collected from the Federal Reserve Bank of New York. The dataset was last
               updated two years ago and includes information about wages for specific majors,
               unemployment rates, underemployment rates, and wages based on level of education."),
             h2("Target Audience"),
