@@ -19,8 +19,10 @@ new_wages2 <- melt(filtered_wages, id.vars = 'year', variable.name ='Education')
 
 ui <- fluidPage(
   tabsetPanel(
-    tabPanel("page1",
-             titlePanel("Median Wage of US College Graduates by Majors"),
+    tabPanel("Introduction",
+             )
+    tabPanel("Early and Middle Career Wages by Major",
+             titlePanel("Early and Middle Career Wages by Major"),
              sidebarLayout(
                sidebarPanel(
                  radioButtons("wage", "Early career vs. Mid-career",
@@ -34,7 +36,7 @@ ui <- fluidPage(
              ) 
     ),
     
-    tabPanel("page2",  
+    tabPanel("Unemployment and Underemployment by Major",  
              titlePanel("Unemployment and Underemployment by Major"),
              sidebarLayout(
                sidebarPanel(
@@ -56,11 +58,11 @@ ui <- fluidPage(
              )
     ),
     
-    tabPanel("page3",
+    tabPanel("US High School Degree vs. Bachelor's Degree Wage",
              titlePanel("US High School and Bachelor's Wage Changes Graphs"),
              sidebarLayout(
                sidebarPanel(
-                 p("You can analyze the different wages median between high school and bachelor's. Select
+                 p("You can analyze the different median wages between a high school degree and a bachelor's degree. Select
                    the education that you are interested in to observe the scatterplot and the
                    connecting line"),
                  checkboxInput("line", "Line Connection"),
@@ -76,7 +78,7 @@ ui <- fluidPage(
              )
              
     ),
-    tabPanel("page4")
+    tabPanel("Conclusion")
   )
 )
 
