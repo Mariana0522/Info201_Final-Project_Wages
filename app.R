@@ -21,35 +21,35 @@ ui <- fluidPage(
   tabsetPanel(
     # Panel for Introduction
     tabPanel("Introduction",
-            h2("Project Overview"),
-            p("This report is meant to be used as a tool for high school 
+             h2("Project Overview"),
+             p("This report is meant to be used as a tool for high school 
               and college students. The interactive graphs and data provided 
               will assist students with multiple difficult, school-related decisions.
               Including whether or not to go to college in the first place and selecting
               their college major/career path.As current students ourselves, 
               we simply hope to assist others in making this very intimidating, 
               stressful decision in life as painless and easy as possible."),
-            h2("Data Set"),
-            p("The “US College Graduates Wages” Dataset was collected by Daniel Simpson, 
+             h2("Data Set"),
+             p("The “US College Graduates Wages” Dataset was collected by Daniel Simpson, 
               a data scientist at the Birkbeck University of London. He created the dataset based
               on data collected from the Federal Reserve Bank of New York. The dataset was last
               updated two years ago and includes information about wages for specific majors,
               unemployment rates, underemployment rates, and wages based on level of education."),
-            h2("Target Audience"),
-            p("Our target audience are all US national and international high school and college students.
+             h2("Target Audience"),
+             p("Our target audience are all US national and international high school and college students.
               We provide data on US college graduates’ median wages, unemployment rates, and underemployment 
               rates based on different majors. Moreover, we also compared the median wages between the two 
               education levels to help students learn their career prospects."),
-            h2("Question"),
-            p("The questions we focused on are:"), 
-            p("1. Which major has the highest average wage? How does the median wage change from early-career to mid-career?"),
-            p("2. Which majors have the lowest unemployment rates? Which have the highest? Underemployment rates?"),  
-            p("3. What are the differences between high school and college students' wages? How have these wages changed over time?"),
-            h2("Creators"),
-            p("Mariana Li Chen"),
-            p("Zitian Zeng"),
-            p("Jake Sasaki")
-            ),
+             h2("Question"),
+             p("The questions we focused on are:"), 
+             p("1. Which major has the highest average wage? How does the median wage change from early-career to mid-career?"),
+             p("2. Which majors have the lowest unemployment rates? Which have the highest? Underemployment rates?"),  
+             p("3. What are the differences between high school and college students' wages? How have these wages changed over time?"),
+             h2("Creators"),
+             p("Mariana Li Chen"),
+             p("Zitian Zeng"),
+             p("Jake Sasaki")
+    ),
     # Panel for Early and Middle Career Wages by Major
     tabPanel("Early and Middle Career Wages by Major",
              titlePanel("Early and Middle Career Wages by Major"),
@@ -109,7 +109,33 @@ ui <- fluidPage(
              
     ),
     # Panel for Conclusion
-    tabPanel("Conclusion")
+    tabPanel("Conclusion", 
+             h2("Conclusion"),
+             p("From our data on early and middle career wages, we discovered 
+             that engineering based majors tend to be the most lucrative. 
+             9 out of the top 10 majors in early career wages and 6 out of the 
+             top 10 in middle career wages were based in engineering. 
+             The top 4 of these include chemical, electrical, aerospace, 
+             and computer engineering with early career wage landing upwards of $65,000 
+             and middle career wages trending upwards from $100,000.After observing and 
+             comparing high school and bachelor’s degree median wage, 
+             we can see that there is a huge wage gap and bachelor’s median wage has always been higher."),
+             p("This dominance in terms of engineering majors’ wages informs us how much the world 
+               values innovation. The engineering field is typically in the forefront of developing 
+               new technologies that shape society as a whole. Engineering’s versatility across 
+               industries justifies its wages and makes it an excellent choice of major."),
+             h2("Dataset"),
+             p("While our data is coming from a reliable source and presents insights 
+             on a multitude of questions, its lack of details on important factors 
+             including gender and race may mislead some more underrepresented groups
+             and induce biased results. For example, the wages displayed in the most 
+             lucrative majors are likely made up of mostly white males, meaning that
+             the wages may differ for other groups."),
+             h2("Future Ideas"),
+             p("Because our data was separated into multiple datasets,
+             in the future we would like to combine them to improve convenience.
+             We would also like to include more factors in our data that better
+             represent minority groups."))
   )
 )
 
@@ -165,7 +191,7 @@ server <- function(input, output) {
       theme(axis.title.x = element_text(face = "bold", size = 16, margin = margin(t = 20))) +
       theme(axis.title.y = element_text(face = "bold", size = 16, margin = margin(r = 20)))
   })
-   # First Text for Unemployment and Underemployment by Major
+  # First Text for Unemployment and Underemployment by Major
   output$text1 <- renderText({
     "This bar plot displays the unemployment rate for each college major. Future and current college
     students can use this as a resource in deciding their major. Knowing the unemployment rates of each major
@@ -259,7 +285,6 @@ server <- function(input, output) {
       and Bachelor's in the same graph from the years 1990 to 2019, there is no missing
       values in this dataset."}
   })
-  
 }
 
 shinyApp(ui = ui, server = server)
