@@ -19,6 +19,7 @@ new_wages2 <- melt(filtered_wages, id.vars = 'year', variable.name ='Education')
 
 ui <- fluidPage(
   tabsetPanel(
+    # Panel for Introduction
     tabPanel("Introduction",
             h2("Project Overview"),
             p("This report is meant to be used as a tool for high school 
@@ -49,6 +50,7 @@ ui <- fluidPage(
             p("Zitian Zeng"),
             p("Jake Sasaki")
             ),
+    # Panel for Early and Middle Career Wages by Major
     tabPanel("Early and Middle Career Wages by Major",
              titlePanel("Early and Middle Career Wages by Major"),
              sidebarLayout(
@@ -63,7 +65,7 @@ ui <- fluidPage(
                )
              ) 
     ),
-    
+    # Panel for Unemployment and Underemployment by Major
     tabPanel("Unemployment and Underemployment by Major",  
              titlePanel("Unemployment and Underemployment by Major"),
              sidebarLayout(
@@ -85,7 +87,7 @@ ui <- fluidPage(
                )
              )
     ),
-    
+    # Panel for US High School Degree vs. Bachelor's Degree Wage
     tabPanel("US High School Degree vs. Bachelor's Degree Wage",
              titlePanel("US High School and Bachelor's Wage Changes Graphs"),
              sidebarLayout(
@@ -106,11 +108,13 @@ ui <- fluidPage(
              )
              
     ),
+    # Panel for Conclusion
     tabPanel("Conclusion")
   )
 )
 
 server <- function(input, output) {
+  # Plot for Early and Middle Career Wages by Major
   output$plot <- renderPlot({
     if(input$wage == "Early career"){
       wages1 %>%
@@ -124,10 +128,12 @@ server <- function(input, output) {
         theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
     }
   })
+  # Text for Early and Middle Career Wages by Major
   output$text <- renderText({
     paste("You can choose two graphs that display either the median wage in early career or
                the median wage in mid career by major of different majors.")
   })
+  # Table for Early and Middle Career Wages by Major
   output$table3 <- renderDT({
     if(input$wage == "Early career"){
       dt3 <- wages1 %>% 
@@ -142,6 +148,7 @@ server <- function(input, output) {
     }
   })
   
+  # First Plot for Unemployment and Underemployment by Major
   data <- reactive({
     req(input$select)
     df <- wages1 %>% 
@@ -158,12 +165,13 @@ server <- function(input, output) {
       theme(axis.title.x = element_text(face = "bold", size = 16, margin = margin(t = 20))) +
       theme(axis.title.y = element_text(face = "bold", size = 16, margin = margin(r = 20)))
   })
+   # First Text for Unemployment and Underemployment by Major
   output$text1 <- renderText({
     "This bar plot displays the unemployment rate for each college major. Future and current college
     students can use this as a resource in deciding their major. Knowing the unemployment rates of each major
     allows students to understand the how difficult it is to get a job after school if this career path is chosen."
   })
-  
+  # Second Plot for Unemployment and Underemployment by Major
   output$barPlot2 <- renderPlot({
     und <- ggplot(data(), aes(y = `Underemployment Rate`, x = Major, fill = Major))
     und + geom_bar(stat = "sum") +
@@ -175,7 +183,7 @@ server <- function(input, output) {
       theme(axis.title.x = element_text(face = "bold", size = 16, margin = margin(t = 20))) +
       theme(axis.title.y = element_text(face = "bold", size = 16, margin = margin(r = 20)))
   })
-  
+  # Second Text for Unemployment and Underemployment by Major
   output$text2 <- renderText({
     "This bar plot displays the underemployment rate for each college major. Underemployment is 'the siuation
     of those who are able to find employment only for shorter than normal periods' or someone whose work doesn't 
@@ -183,13 +191,14 @@ server <- function(input, output) {
     part-time at a retail store. This information will inform students about which jobs are in higher demand due to
     their lower underemployment rate."
   })
-  
+  # First Table for Unemployment and Underemployment by Major
   output$table1 <- renderDT({
     dt1 <- wages1 %>% 
       select(Major, `Unemployment Rate`) %>% 
       arrange(`Unemployment Rate`) 
     datatable(dt1, options = list(pageLength = 5, lengthMenu = c(1, 3, 5)))
   })
+  # Second Table for Unemployment and Underemployment by Major
   output$table2 <- renderDT({
     dt2 <- wages1 %>% 
       select(Major, `Underemployment Rate`) %>% 
@@ -198,7 +207,7 @@ server <- function(input, output) {
   })
   
   
-  
+  # Plot for US High School Degree vs. Bachelor's Degree Wage
   color_palette <- reactive({
     if(input$color == "Standard") {
       brewer.pal(9, "Set1")
@@ -238,6 +247,7 @@ server <- function(input, output) {
       
     }
   })
+  # Text for US High School Degree vs. Bachelor's Degree Wage
   output$text3 <- renderText({
     if(input$wage == "high school"){
       "This Scatter Plot shows the median US wage for High School students
