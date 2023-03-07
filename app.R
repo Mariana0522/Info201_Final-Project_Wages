@@ -20,7 +20,32 @@ new_wages2 <- melt(filtered_wages, id.vars = 'year', variable.name ='Education')
 ui <- fluidPage(
   tabsetPanel(
     tabPanel("Introduction",
-             )
+            h2("Project Overview"),
+            p("This report is meant to be used as a tool for high school 
+              and college students. The interactive graphs and data provided 
+              will assist students with multiple difficult, school-related decisions.
+              Including whether or not to go to college in the first place and selecting
+              their college major/career path.As current students ourselves, 
+              we simply hope to assist others in making this very intimidating, 
+              stressful decision in life as painless and easy as possible."),
+            h2("Data Set"),
+            p("The “US College Graduates Wages” Dataset was collected by Daniel Simpson, 
+              a data scientist at the Birkbeck University of London. The dataset was last
+              updated two years ago and includes information about wages for specific majors,
+              unemployment rates, underemployment rates, and wages based on level of education."),
+            h2("Target Audience"),
+            p("Our target audience are all US national and international high school and college students.
+              We provide data on US college graduates’ median wages, unemployment rates, and underemployment 
+              rates based on different majors. Moreover, we also compared the median wages between the two 
+              education levels to help students learn their career prospects."),
+            h2("Question"),
+            p("The questions we focused on are: 
+              1. Which majors have the lowest unemployment rates? Which have the highest? Underemployment rates?
+              
+              2. What are the differences between high school and college students' wages? How have these wages changed over time? 
+              
+              3. Which major has the highest average wage? How does the median wage change from early-career to mid-career? ")
+            ),
     tabPanel("Early and Middle Career Wages by Major",
              titlePanel("Early and Middle Career Wages by Major"),
              sidebarLayout(
