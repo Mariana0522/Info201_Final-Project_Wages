@@ -39,12 +39,15 @@ ui <- fluidPage(
               rates based on different majors. Moreover, we also compared the median wages between the two 
               education levels to help students learn their career prospects."),
             h2("Question"),
-            p("The questions we focused on are: 
-              1. Which majors have the lowest unemployment rates? Which have the highest? Underemployment rates?
-              
-              2. What are the differences between high school and college students' wages? How have these wages changed over time? 
-              
-              3. Which major has the highest average wage? How does the median wage change from early-career to mid-career? ")
+            p("The questions we focused on are:"), 
+            p("1. Which majors have the lowest unemployment rates? Which have the highest? Underemployment rates?"),
+            p("2. What are the differences between high school and college students' wages? How have these wages changed over time? 
+              "),  
+            p("3. Which major has the highest average wage? How does the median wage change from early-career to mid-career?"),
+            h2("Creators"),
+            p("Mariana Li Chen"),
+            p("Zitian Zeng"),
+            p("Jake Sasaki")
             ),
     tabPanel("Early and Middle Career Wages by Major",
              titlePanel("Early and Middle Career Wages by Major"),
