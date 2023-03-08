@@ -26,7 +26,7 @@ ui <- fluidPage(
               and college students. The interactive graphs and data provided 
               will assist students with multiple difficult, school-related decisions.
               Including whether or not to go to college in the first place and selecting
-              their college major/career path.As current students ourselves, 
+              their college major/career path. As current students ourselves, 
               we simply hope to assist others in making this very intimidating, 
               stressful decision in life as painless and easy as possible."),
              h2("Data Set"),
@@ -42,7 +42,7 @@ ui <- fluidPage(
               education levels to help students learn their career prospects."),
              h2("Question"),
              p("The questions we focused on are:"), 
-             p("1. Which major has the highest average wage? How does the median wage change from early-career to mid-career?"),
+             p("1. Which major has the highest median wage? How does the median wage change from early-career to mid-career?"),
              p("2. Which majors have the lowest unemployment rates? Which have the highest? Underemployment rates?"),  
              p("3. What are the differences between high school and college students' wages? How have these wages changed over time?"),
              h2("Creators"),
@@ -288,4 +288,3 @@ server <- function(input, output) {
 }
 
 shinyApp(ui = ui, server = server)
-
