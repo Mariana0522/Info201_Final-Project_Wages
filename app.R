@@ -21,6 +21,7 @@ ui <- fluidPage(
   tabsetPanel(
     # Panel for Introduction
     tabPanel("Introduction",
+             imageOutput("image"),
              h2("Project Overview"),
              p("This report is meant to be used as a tool for high school 
               and college students. The interactive graphs and data provided 
@@ -140,6 +141,11 @@ ui <- fluidPage(
 )
 
 server <- function(input, output) {
+  output$image <- renderImage({
+    list(src = "student2.png",
+         height = 330)
+    
+  }, deleteFile = F)
   # Plot for Early and Middle Career Wages by Major
   output$plot <- renderPlot({
     if(input$wage == "Early career"){
